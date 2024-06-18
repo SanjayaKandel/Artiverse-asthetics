@@ -1,0 +1,53 @@
+{% extends '_base.html' %}
+{% block title %}
+Explore Artworks
+{% endblock %}
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/explore.css' %}">
+<section class="search-filter">
+    <div class="container">
+        <form action="{% url 'query' %}" method="get">
+            <input type="text" placeholder="Search by title, artist, or keyword" name="query" id="query" required>
+            <select name="medium" id="medium" required>
+                <option value="">Choose Medium</option>
+                <option value="painting">Painting</option>
+                <option value="sculpture">Sculpture</option>
+                <option value="photography">Photography</option>
+            </select>
+            <button type="submit">Search</button>
+        </form>
+    </div>
+</section>
+
+<section>
+    <ul class="cards">
+        {% for art in arts %}
+            <li class="card">
+             
+                    <img src="{{ art.image.url }}" class="card__image" alt="{{ art.title }}">
+                    <div class="card__overlay">
+                        <div class="card__header">
+                            <h3 class="image__title">{{ art.title }}</h3>
+                            <svg class="card__arc" xmlns="http://www.w3.org/2000/svg">
+                                <path></path>
+                            </svg>
+                            <img class="card__thumb" src="https://i.imgur.com/7D7I6dI.png" alt="">
+                            <div class="card__header-text">
+                                <h3 class="card__title">{{ art.artist_name }}</h3>
+                                <span class="card__status">1 hour ago</span>
+                            </div>
+                        </div>
+                        <p class="card__description">{{ art.description }}</p>
+                        <div class="card__buttons">
+                            <button class="card__wishlist">♡ Wishlist</button>
+                            <button class="card__buy">Buy Now</button>
+                        </div>
+                    </div>
+               
+            </li>
+        {% endfor %}
+    </ul>
+</section>
+<script src="{% static 'js/explore.js' %}"></script>
+{% endblock %}

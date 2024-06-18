@@ -1,0 +1,66 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <style>
+        .errorlist {
+            display: none;
+        }
+    </style>
+    <div class="background-text">ARTIVERSE</div>
+    <div class="container" id="container">
+        <div class="form-container sign-up" id="sign-up-form">
+            <h1>Create Account</h1>
+            <div class="social-icons">
+                <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
+                <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
+                <a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
+            </div>
+            <form method="POST" class="form">
+                {% csrf_token %}
+                {{ registerform.as_p }}
+                <button type="submit" name="register">Sign Up</button>
+            </form>
+        </div>
+        <div class="form-container sign-in" id="sign-in-form">
+            <h1>Sign In</h1>
+            <div class="social-icons">
+                <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
+                <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
+                <a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
+            </div>
+            <form method="POST" class="form">
+                {% csrf_token %}
+                {{ loginform.as_p }}
+                <a href="#">Forget Your Password?</a>
+                <button type="submit" name="login">Log In</button>
+            </form>
+        </div>
+        <div class="toggle-container">
+            <div class="toggle">
+                <div class="toggle-panel toggle-left">
+                    <h1>Welcome Back!</h1>
+                    <p>Use your email and password to login</p>
+                    <button class="hidden" id="login" onclick="toggleLogin()">Sign In</button>
+                </div>
+                <div class="toggle-panel toggle-right">
+                    <h1>Greeting User!</h1>
+                    <p>New to Artiverse?<br><br> Create your new account today and embark on a journey through the
+                        captivating world of digital artistry.</p>
+                    <button class="hidden" id="register" onclick="toggleRegister()">Sign Up</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{% static 'js/login.js' %}"></script>
+</body>
+</html>

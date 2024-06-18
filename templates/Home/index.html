@@ -1,0 +1,67 @@
+
+{% extends '_base.html' %}
+{% block content %}
+{% load static %}
+
+<div class="videos">
+    <video autoplay loop muted src="{% static 'img/introvid.mp4' %}"></video>
+    <div id="center">
+        <div id="right">
+            <h1>From Vision to Vivid Reality</h1>
+        </div>
+        <div id="left">
+            <h3>"Where Imagination Meet Canvas".</h3>
+            <a href=""><button class="left-btn"><span>Contact us </span></button></a>
+        </div>
+    </div>
+</div>
+<div class="Featured-arts">
+    <h1>Popular now</h1>
+</div>
+<div id="page2-main">
+    <div class="arts" id="art1">
+        <div class="art-overlay">
+            <div class="art-details">
+                <p class="art-name">Art Name 1</p>
+                <p class="artist-name">Artist 1</p>
+                <a href="#" class="view-more"><span>View More</span></a>
+            </div>
+        </div>
+        <img src="https://assets.telegraphindia.com/telegraph/2022/Oct/1666424870_untitled-design-23.jpg" alt="Art 1">
+    </div>
+    <div class="arts" id="art2">
+        <div class="art-overlay">
+            <div class="art-details">
+                <p class="art-name">Art Name 2</p>
+                <p class="artist-name">Artist 2</p>
+                <a href="#" class="view-more"><span>View More</span></a>
+            </div>
+        </div>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSy7fS6dXuH6MDW28ZbksgdSOz9pJUZAHEzhwvojw1Ycg&s" alt="Art 2">
+    </div>
+    <div class="arts" id="art3">
+        <div class="art-overlay">
+            <div class="art-details">
+                <p class="art-name">Art Name 3</p>
+                <p class="artist-name">Artist 3</p>
+                <a href="#" class="view-more"><span>View More</span></a>
+            </div>
+        </div>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSy7fS6dXuH6MDW28ZbksgdSOz9pJUZAHEzhwvojw1Ycg&s" alt="Art 3">
+    </div>
+    <div class="arts" id="art4">
+        <div class="art-overlay">
+            <div class="art-details">
+                <p class="art-name">Art Name 4</p>
+                <p class="artist-name">Artist 4</p>
+                <a href="#" class="view-more"><span>View More</span></a>
+            </div>
+        </div>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSy7fS6dXuH6MDW28ZbksgdSOz9pJUZAHEzhwvojw1Ycg&s" alt="Art 4">
+    </div>
+    </div>
+   
+<div id="explore-link">
+    <a href="{%url 'explore' %}"><span>Explore more Arts</span></a>
+</div>
+{%endblock%}

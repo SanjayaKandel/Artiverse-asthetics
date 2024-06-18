@@ -1,0 +1,54 @@
+{% extends '_base.html' %}
+{% block title %}
+Artiverse - Search
+{% endblock %}
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/search.css' %}">
+<section class="search-filter">
+    <div class="container-search">
+        <form action="{%url 'query' %}" method="get">
+            <input type="text" placeholder="Search by title, artist, or keyword" name="query" id="query" required>
+            <select name="medium" id="medium" required>
+                <option value="">Choose Medium</option>
+                <option value="painting">Painting</option>
+                <option value="sculpture">Sculpture</option>
+                <option value="photography">Photography</option>
+            </select>
+            <button type="submit">Search</button>
+        </form>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        {% if result %}
+        <h4 style="text-align: center; font-weight: lighter; font-size: 18px; padding-top: 20px;">Search Result found for "{{ query }}"</h4>
+        <ul class="cards">
+            {% for art in result %}
+            <li class="card">
+                <img src="{{ art.image.url }}" class="card__image" alt="{{ art.title }}">
+                <div class="card__overlay">
+                    <div class="card__header">
+                        <h3 class="card__title">{{ art.title }}</h3>
+                    </div>
+                    <p class="card__description">{{ art.description }}</p>
+                    <div class="card__buttons">
+                        <button class="card__wishlist">♡ Wishlist</button>
+                        <button class="card__buy">Buy Now</button>
+                    </div>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <div class="no-result">
+            <h4>No Results found for "{{ query }}"</h4>
+            <img src="{% static 'img/error.png' %}" alt="No Results">
+            <p>No artworks found.</p>
+        </div>
+        {% endif %}
+    </div>
+</section>
+<script src="{% static 'js/explore.js' %}"></script>
+{% endblock %}
